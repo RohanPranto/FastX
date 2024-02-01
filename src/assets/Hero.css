@@ -1,0 +1,33 @@
+.btn{
+    border: 2px solid #e1f240;
+    padding: 0.2em 2em;
+
+}
+.btn:hover{
+    border: 2px solid #e1f240;
+    
+    transition: 0.3s;
+}
+h1{
+    font-weight: 700;
+    font-size: 3.2em;
+    color: #cdcaca;
+}
+h1 span{
+    color: #e1f240;
+}
+.hero p{
+    font-weight: 600;
+}
+.hero{
+    margin-top: 15%;
+}
+@media screen and (max-width: 768px) {
+    .hero{
+        margin-top: 70%;
+    }
+    h1{
+        font-size: 2em;
+    }
+    
+}

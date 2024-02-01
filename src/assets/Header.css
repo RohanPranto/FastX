@@ -1,0 +1,27 @@
+/* inspired form gumroad website */
+button {
+    --bg: #e1f240;
+    --hover-bg: #fff;
+    --hover-text: #000;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid var(--bg);
+    border-radius: 4px;
+    padding: 0.2em 2em;
+    font-weight: 600;
+    background: var(--bg);
+    transition: 0.3s;
+  }
+  rihaa_anuv
+  button:hover {
+    color: #000;
+    transform: translate(-0.25rem, -0.25rem);
+    background: var(--hover-bg);
+    box-shadow: 0.25rem 0.25rem var(--bg);
+  }
+  
+  button:active {
+    transform: translate(0);
+    box-shadow: none;
+  }
+  
