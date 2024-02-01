@@ -86,7 +86,7 @@ function FilePreviewPage() {
       userName: userName,
       id: docId,
       shortUrl: `${
-        process.env.REACT_APP_BASE_URL || import.meta.env.VITE_PUBLIC_BASE_URL
+        process.env.DOMAIN_KEY || import.meta.env.VITE_PUBLIC_BASE_URL
       }f/${docId}`,
       ...passwordData,
     });
@@ -100,9 +100,8 @@ function FilePreviewPage() {
       userName: userName,
       id: docId,
       shortUrl: `${
-        process.env.REACT_APP_BASE_URL || import.meta.env.VITE_PUBLIC_BASE_URL
+        process.env.DOMAIN_KEY || import.meta.env.VITE_PUBLIC_BASE_URL
       }f/${docId}`,
-      
       ...passwordData,
     });
 
