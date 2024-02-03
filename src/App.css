@@ -20,12 +20,16 @@
   margin-right: auto;
   height: 300px;
 }
-.preview-div .col-lg-5{
+.preview-div .col-lg-3, .preview-div .col-lg-2, .preview-div .col-lg-4{
   border: 3px solid #e0f2407b;
   
 }
 .preview-div h2, .preview-div h3, .preview-div p, .pw label{
   color: #bbb7b7;
+}
+
+.share{
+  margin-top: 12%;
 }
 .preview-div .border{
   border-radius: 10px;
@@ -110,5 +114,7 @@
     position: absolute;
     right: 10%;
   }
-  
+  .share{
+    margin-top: 0;
+  }
 }

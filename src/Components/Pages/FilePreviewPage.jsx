@@ -125,10 +125,12 @@ function FilePreviewPage() {
       <div className="container">
         <Header2 />
 
-        <div className="mt-5">
+        <div className="share">
           {fileInfo ? (
-            <div className="row pt-3 gap-4 justify-content-center">
-              <div className="col-lg-5 col-md-12 p-3 rounded-3 text-center">
+            <div className="row mb-3 gap-4 justify-content-center">
+
+
+              <div className="col-lg-4 col-md-12 p-3 rounded-3 text-center">
                 <Save size={150} color="#e2dfdf" className="mb-3" />
                 <h2 className="fw-bold">{fileInfo.filename}</h2>
                 <p>
@@ -136,7 +138,10 @@ function FilePreviewPage() {
                   {(fileInfo.fileSize / (1024 * 1024)).toFixed(2)} MB
                 </p>
               </div>
-              <div className="col-lg-5 col-md-12 p-3 rounded-3">
+
+
+
+              <div className="col-lg-4 col-md-12 p-3 rounded-3">
                 <h3>User: {fileInfo.userName}</h3>
                 <h3>Document ID: {fileInfo.id}</h3>
                 <div className="d-flex align-items-center border p-2">
@@ -164,8 +169,8 @@ function FilePreviewPage() {
                     <div className="checkmark"></div>
                   </label>
                   {isPasswordVisible && (
-                    <div className="row">
-                      <div className="col-lg-8">
+                    <div className="row" >
+                      <div className="col-lg-10">
                       <input
                         className="w-100 password-input mt-2 mb-1"
                         type="password"
@@ -174,22 +179,29 @@ function FilePreviewPage() {
                       />
                       </div>
 
-                      <div className="col-lg-4">
+                      <div className="col-lg-2" style={{border:"none"}}>
                       <button
                         className="btn"
                         style={{ color: "white" , padding: "8px", marginTop:5, fontSize: "0.9rem"}}
                         onClick={handleSavePasswordClick}
                       >
-                        Save Password
+                        Save
                       </button>
                       </div>
                     </div>
                   )}
                 </div>
               </div>
-              <div className="row justify-content-center mt-4 mb-5">
-              <QRCode value={fileInfo.shortUrl} size={256} />
+
+              <div className="col-lg-3 col-md-12 p-3 rounded-3 text-center">
+              <div className="row justify-content-center ">
+                <h3 className="mt-2">Or simply scan it</h3>
+              <QRCode style={{border:"2px solid white", borderRadius:7}} value={fileInfo.shortUrl} size={200} />
             </div>
+              </div>
+
+
+              
             </div>
             
           ) : (
