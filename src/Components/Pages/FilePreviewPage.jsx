@@ -136,7 +136,7 @@ function FilePreviewPage() {
                 </p>
               </div>
               <div className="col-lg-5 col-md-12 p-3 rounded-3">
-                <h3>Username: {fileInfo.userName}</h3>
+                <h3>User: {fileInfo.userName}</h3>
                 <h3>Document ID: {fileInfo.id}</h3>
                 <div className="d-flex align-items-center border p-2">
                   <h3 className="mb-0 flex-grow-1 shorturl">

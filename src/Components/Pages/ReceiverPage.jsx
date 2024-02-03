@@ -20,6 +20,7 @@ function ReceiverPage() {
 
         if (docSnap.exists()) {
           setFileInfo(docSnap.data());
+          console.log("Document data:", docSnap.data());
         } else {
           console.log("Document does not exist!");
         }
@@ -43,6 +44,7 @@ function ReceiverPage() {
     <div className="container d-flex align-items-center justify-content-center vh-100">
       {fileInfo ? (
         <div className="receiver_div text-center">
+          <h3 style={{backgroundColor:"white"}}> <strong style={{backgroundColor:"white"}}>{fileInfo.userName}</strong> shared a file!</h3>
           <img
             style={{ backgroundColor: "white" }}
             src={download}

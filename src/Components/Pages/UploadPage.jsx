@@ -49,7 +49,7 @@ function UploadPage() {
       fileSize: file?.size,
       fileType: file?.type,
       fileUrl: fileUrl,
-      userName: userName,
+      userName: user.email,
       id: docId,
       shortUrl: `${import.meta.env.VITE_PUBLIC_BASE_URL}f/${docId}`,
     });
@@ -60,7 +60,7 @@ function UploadPage() {
       fileSize: file?.size,
       fileType: file?.type,
       fileUrl: fileUrl,
-      userName: userName,
+      userName: user.email,
       id: docId,
       shortUrl: `${import.meta.env.VITE_PUBLIC_BASE_URL}f/${docId}`,
     });
