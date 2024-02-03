@@ -24,10 +24,13 @@ h1 span{
 }
 @media screen and (max-width: 768px) {
     .hero{
-        margin-top: 70%;
+        margin-top: 55%;
     }
     h1{
         font-size: 2em;
+    }
+    .btn{
+        padding: 0.2em 1em;
     }
     
 }
