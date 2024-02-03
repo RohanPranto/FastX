@@ -8,7 +8,7 @@ import { app } from '../../../firebaseConfig';
 import { generate } from '../UploadForm/Generate';
 
 function UploadPage() {
-  const { user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const [progress, setProgress] = useState();
   const [fileDocId, setFileDocId] = useState();
   const [uploadCompleted, setUploadCompleted] = useState();
@@ -77,9 +77,12 @@ function UploadPage() {
 
   return (
     <div>
-      <div className='text-center'>
+      {isAuthenticated ? (<div className='text-center'>
         <Upload uploadBtnClick={(file) => uploadFile(file)} progress={progress} />
-      </div>
+      </div>):
+      (
+        <p style={{color:"white"}}>Please login to continue</p>
+      )}
     </div>
   );
 }
