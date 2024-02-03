@@ -6,6 +6,7 @@ import "./../../assets/Preview.css";
 import { ArrowLeftSquare, Backpack, Copy, Save } from "lucide-react";
 import Header2 from "../Header2";
 import { generate } from "../UploadForm/Generate";
+import QRCode from "qrcode.react";
 
 function FilePreviewPage() {
   const { docid } = useParams();
@@ -186,7 +187,11 @@ function FilePreviewPage() {
                   )}
                 </div>
               </div>
+              <div className="row justify-content-center mt-4 mb-5">
+              <QRCode value={fileInfo.shortUrl} size={256} />
             </div>
+            </div>
+            
           ) : (
             <p>Loading...</p>
           )}
