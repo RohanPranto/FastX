@@ -50,3 +50,65 @@
   color: #13161b;
   font-weight: bold;
 }
+/* lock input */
+.ct {
+  --input-focus: #2d8cf0;
+  --input-out-of-focus: #ccc;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #323232;
+  display: flex; /* Add flex display to make the label and checkbox side by side */
+  align-items: center; /* Align items in the center vertically */
+  position: relative;
+  cursor: pointer;
+}
+
+.ct input {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkmark {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px; /* Add margin to create space between label and checkbox */
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--input-out-of-focus);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  position: relative;
+}
+
+.ct input:checked ~ .checkmark {
+  background-color: var(--input-focus);
+}
+
+.checkmark:after {
+  content: "";
+  width: 7px;
+  height: 15px;
+  position: absolute;
+  top: 2px;
+  left: 8px;
+  display: none;
+  border: solid var(--bg-color);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+.ct input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* lock input */
+@media screen and (max-width: 768px) {
+  .copy-icon{
+    position: absolute;
+    right: 10%;
+  }
+  
+}

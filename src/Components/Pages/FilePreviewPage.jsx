@@ -13,6 +13,12 @@ function FilePreviewPage() {
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const db = getFirestore(app);
+  const [isChecked, setChecked] = useState(true);
+
+  const handleCheckboxChange = () => {
+    setChecked(!isChecked);
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   useEffect(() => {
     const fetchFileInfo = async () => {
@@ -102,7 +108,7 @@ function FilePreviewPage() {
       shortUrl: `${
         process.env.REACT_APP_BASE_URL || import.meta.env.VITE_PUBLIC_BASE_URL
       }f/${docId}`,
-      
+
       ...passwordData,
     });
 
@@ -147,14 +153,14 @@ function FilePreviewPage() {
 
                 {/* Password Input */}
                 <div className="mt-3 pw">
-                  <label>
+                  <label className="ct">
                     Enable Password?
                     <input
+                      checked={!isChecked}
+                      onChange={handleCheckboxChange}
                       type="checkbox"
-                      className="mx-1"
-                      checked={isPasswordVisible}
-                      onChange={() => setIsPasswordVisible(!isPasswordVisible)}
                     />
+                    <div className="checkmark"></div>
                   </label>
                   {isPasswordVisible && (
                     <div>
