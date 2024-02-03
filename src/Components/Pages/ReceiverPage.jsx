@@ -63,14 +63,13 @@ function ReceiverPage() {
               <input
                 type="password"
                 placeholder="Enter password"
-                className="text-center rounded-3"
+                className="text-center rounded-3 mb-1"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ color: "black", backgroundColor: "white" }}
               />
             </div>
           )}
-          <br />
           {fileInfo.password == password && (
             <Link
               className="btn btn-primary"
