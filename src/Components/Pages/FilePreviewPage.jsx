@@ -150,7 +150,7 @@ function FilePreviewPage() {
                     onClick={handleCopyClick}
                   />
                 </div>
-
+                <p className="mt-1 fw-bold">Share this URL with friends!</p>
                 {/* Password Input */}
                 <div className="mt-3 pw">
                   <label className="ct">
@@ -163,21 +163,25 @@ function FilePreviewPage() {
                     <div className="checkmark"></div>
                   </label>
                   {isPasswordVisible && (
-                    <div>
+                    <div className="row">
+                      <div className="col-lg-8">
                       <input
                         className="w-100 password-input mt-2 mb-1"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
+                      </div>
 
+                      <div className="col-lg-4">
                       <button
-                        className="btn mt-2"
-                        style={{ color: "white" }}
+                        className="btn"
+                        style={{ color: "white" , padding: "8px", marginTop:5, fontSize: "0.9rem"}}
                         onClick={handleSavePasswordClick}
                       >
                         Save Password
                       </button>
+                      </div>
                     </div>
                   )}
                 </div>
