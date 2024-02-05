@@ -34,6 +34,7 @@ function History() {
           collection(db, "fileInformation"),
           where("userName", "==", user.email),
           orderBy("uploadDate", "desc"),
+          orderBy("uploadTime", "desc"),
         );
        
         

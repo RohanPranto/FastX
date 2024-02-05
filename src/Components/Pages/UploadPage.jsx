@@ -22,22 +22,29 @@ function UploadPage() {
     };
     const storageRef = ref(storage, "file-upload/" + file?.name);
     const uploadTask = uploadBytesResumable(storageRef, file, file.type);
-
+  
     uploadTask.on("state_changed", (snapshot) => {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       console.log("Upload is " + progress + "% done");
       setProgress(progress);
-
+  
+      // Check if the upload is complete
       if (progress === 100) {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log("File available at", downloadURL);
-          console.log(file, downloadURL);
-          saveInfo(file, downloadURL);
-          setUploadCompleted(true);
-        });
+        // Get the download URL when the upload is complete
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((downloadURL) => {
+            console.log("File available at", downloadURL);
+            console.log(file, downloadURL);
+            saveInfo(file, downloadURL);
+            setUploadCompleted(true);
+          })
+          .catch((error) => {
+            console.error("Error getting download URL:", error);
+          });
       }
     });
   };
+  
 
   const saveInfo = async (file, fileUrl) => {
     const docId = generate().toString();
@@ -90,7 +97,10 @@ function UploadPage() {
         <Upload uploadBtnClick={(file) => uploadFile(file)} progress={progress} />
       </div>):
       (
-        <p style={{color:"white"}}>Please login to continue</p>
+        <div className="container mt-5">
+          <h2 style={{color:"white"}}>Please login to continue</h2>
+          <h6 style={{color:"white"}}>Loading...</h6>
+        </div>
       )}
     </div>
   );

@@ -21,7 +21,10 @@ function Upload({ uploadBtnClick, progress }) {
     setErrorMsg(null);
     setFile(file);
   };
-
+  const handleRemoveFile = () => {
+    setFile(null);
+    setErrorMsg(null);
+  };
   const handleUploadClick = () => {
     if (file) {
       uploadBtnClick(file);
@@ -46,7 +49,7 @@ function Upload({ uploadBtnClick, progress }) {
       <h1 className="mt-5 text-center">Start uploading files and share it!</h1>{" "}
       <br />
       {file ? (
-        <FilePreview file={file} />
+         <FilePreview file={file} removeFile={handleRemoveFile} />
       ) : (
         <div className="d-flex flex-column align-items-center justify-content-center rounded-5 upload" style={{border:"3px solid #e1f240", backgroundColor:"#13161b"}}>
           <label
@@ -56,7 +59,7 @@ function Upload({ uploadBtnClick, progress }) {
             <div className="d-flex flex-column align-items-center justify-content-center pt-5 pb-6" >
               <UploadCloud style={{color:"#fff"}} size={150} />
               <p className="mb-2 text-sm" style={{color:"#fff"}}>
-                <span className="font-semibold">Click to upload</span> or drag
+                Click to upload or drag
                 and drop (Max 5MB)
               </p>
             </div>

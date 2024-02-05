@@ -1,4 +1,4 @@
-import { File } from 'lucide-react';
+import { File, Trash2 } from 'lucide-react';
 import React from 'react';
 
 function FilePreview({ file, removeFile }) {
@@ -12,6 +12,7 @@ function FilePreview({ file, removeFile }) {
             {file.type} {(file.size / 1024 / 1024).toFixed(2)} MB
           </h6>
         </div>
+        <Trash2 style={{backgroundColor:"transparent", cursor:"pointer", color:"red"}} size={24} onClick={removeFile}/>
       </div>
     </div>
   );
