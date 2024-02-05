@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Upload from "./Components/Pages/UploadPage";
 import FilePreviewPage from "./Components/Pages/FilePreviewPage";
 import ReceiverPage from "./Components/Pages/ReceiverPage";
+import History from "./Components/Pages/History";
 // import OffCanvas from './Components/OffCanvas'
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/history" element={<History/>} />
           <Route path="/file-preview/:docid" element={<FilePreviewPage />} />
           <Route path="/f/:shorturl" element={<ReceiverPage />} />
         </Routes>

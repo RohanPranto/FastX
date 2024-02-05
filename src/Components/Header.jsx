@@ -49,6 +49,9 @@ function Header() {
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul className="navbar-nav">
+                <li className='navbar-item' >
+                  <Link to="/history" style={{color:"#BBB7B7", fontWeight:500}} className="nav-link">files</Link>
+                </li>
               </ul>
               {isAuthenticated ? (
             <>

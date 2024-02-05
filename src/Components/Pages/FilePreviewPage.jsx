@@ -195,7 +195,7 @@ function FilePreviewPage() {
 
               <div className="col-lg-3 col-md-12 p-3 rounded-3 text-center">
               <div className="row justify-content-center ">
-                <h3 className="mt-2">Or simply scan it</h3>
+                <h3 className="mt-1">Or simply scan it</h3>
               <QRCode style={{border:"2px solid white", borderRadius:7}} value={fileInfo.shortUrl} size={200} />
             </div>
               </div>
