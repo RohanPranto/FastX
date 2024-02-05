@@ -1,17 +1,28 @@
 // Import necessary dependencies
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getFirestore, collection, query, where, getDocs, orderBy } from "firebase/firestore";
+import { getFirestore, collection, query, where, getDocs, orderBy, deleteDoc, doc } from "firebase/firestore";
 import { app } from "../../../firebaseConfig";
 import Header2 from "../Header2";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Trash2 } from "lucide-react";
 
 // Define the History component
 function History() {
   const { isAuthenticated, user } = useAuth0();
   // State to store the list of uploaded files
   const [fileList, setFileList] = useState([]);
-
+  const handleDelete = async (fileId) => {
+    try {
+      const db = getFirestore(app);
+      const fileRef = doc(db, 'fileInformation', fileId);
+      await deleteDoc(fileRef);
+      // Remove the file from the state
+      setFileList((prevFiles) => prevFiles.filter((file) => file.id !== fileId));
+    } catch (error) {
+      console.error('Error deleting file:', error);
+    }
+  };
   // Effect to fetch the list of uploaded files from Firestore
   useEffect(() => {
     const fetchFileList = async () => {
@@ -24,7 +35,8 @@ function History() {
           where("userName", "==", user.email),
           orderBy("uploadDate", "desc"),
         );
-
+       
+        
         const filesSnapshot = await getDocs(filesQuery);
 
         // Extract file information from the snapshot
@@ -57,6 +69,7 @@ function History() {
                   <th scope="col">Upload Date</th>
                   <th scope="col">Upload Time</th>
                   <th scope="col">Short URL</th>
+                  <th scope="col">Remove</th>
                 </tr>
               </thead>
               <tbody>
@@ -75,6 +88,7 @@ function History() {
                     <td>{file.uploadDate}</td>
                     <td>{file.uploadTime}</td>
                     <td>
+                      
                       <Link
                         target="_blank"
                         style={{ backgroundColor: "transparent", textDecoration: "none" }}
@@ -83,6 +97,9 @@ function History() {
                       >
                         {file.shortUrl}
                       </Link>
+                    </td>
+                    <td>
+                        <Trash2 style={{backgroundColor:"transparent", cursor:"pointer"}} size={24} onClick={() => handleDelete(file.id)}/>
                     </td>
                   </tr>
                 ))}
