@@ -43,6 +43,11 @@ function UploadPage() {
     const docId = generate().toString();
     const userName = user?.fullName || 'Unknown User';
 
+    const currentDate = new Date();
+    const uploadDate = `${padNumber(currentDate.getDate())}-${padNumber(currentDate.getMonth() + 1)}-${currentDate.getFullYear()}`;
+    const uploadTime = `${padNumber(currentDate.getHours())}:${padNumber(currentDate.getMinutes())}:${padNumber(currentDate.getSeconds())}`;
+
+
     // Store file information in Firestore
     await setDoc(doc(db, "fileInformation", docId), {
       filename: file?.name,
@@ -52,6 +57,8 @@ function UploadPage() {
       userName: user.email,
       id: docId,
       shortUrl: `${import.meta.env.VITE_PUBLIC_BASE_URL}f/${docId}`,
+      uploadDate,
+      uploadTime,
     });
 
     // Log the file information after storing in Firestore
@@ -63,6 +70,8 @@ function UploadPage() {
       userName: user.email,
       id: docId,
       shortUrl: `${import.meta.env.VITE_PUBLIC_BASE_URL}f/${docId}`,
+      uploadDate,
+      uploadTime,
     });
 
     setFileDocId(docId);
@@ -86,5 +95,7 @@ function UploadPage() {
     </div>
   );
 }
-
+function padNumber(number) {
+  return String(number).padStart(2, "0");
+}
 export default UploadPage;
