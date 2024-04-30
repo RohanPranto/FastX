@@ -26,11 +26,11 @@ function Header2() {
         >
           <ul className="navbar-nav">
           <li className='navbar-item' >
-                  <Link to="/history" style={{color:"#BBB7B7", fontWeight:500}} className="nav-link">files</Link>
+                  <Link to="/history" style={{color:"#BBB7B7", fontWeight:500}} className="nav-link">Files</Link>
                 </li>
 
                 <li className='navbar-item' >
-                  <Link to="/upload" style={{color:"#BBB7B7", fontWeight:500}} className="nav-link">upload</Link>
+                  <Link to="/upload" style={{color:"#BBB7B7", fontWeight:500}} className="nav-link">Upload</Link>
                 </li>
           </ul>
         </div>

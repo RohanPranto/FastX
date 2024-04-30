@@ -21,10 +21,12 @@ function Upload({ uploadBtnClick, progress }) {
     setErrorMsg(null);
     setFile(file);
   };
+
   const handleRemoveFile = () => {
     setFile(null);
     setErrorMsg(null);
   };
+
   const handleUploadClick = () => {
     if (file) {
       uploadBtnClick(file);
@@ -37,6 +39,20 @@ function Upload({ uploadBtnClick, progress }) {
     }
   };
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const droppedFile = e.dataTransfer.files[0];
+    onFileSelect(droppedFile);
+  };
+
   useEffect(() => {
     if (progress === 100) {
       setUploadComplete(true);
@@ -46,12 +62,12 @@ function Upload({ uploadBtnClick, progress }) {
   return (
     <div className="container">
       <Header2 />
-      <h1 className="mt-5 text-center">Start uploading files and share it!</h1>{" "}
+      <h1 className="mt-5 text-center">Start uploading and share it instantly!</h1>{" "}
       <br />
       {file ? (
          <FilePreview file={file} removeFile={handleRemoveFile} />
       ) : (
-        <div className="d-flex flex-column align-items-center justify-content-center rounded-5 upload" style={{border:"3px solid #e1f240", backgroundColor:"#13161b"}}>
+        <div className="d-flex flex-column align-items-center justify-content-center rounded-5 upload" style={{border:"3px solid #e1f240", backgroundColor:"#13161b"}} onDragOver={handleDragOver} onDragEnter={handleDragEnter} onDrop={handleDrop}>
           <label
             htmlFor="dropzone-file"
             className="d-flex flex-column align-items-center justify-content-center rounded-lg" 
@@ -59,8 +75,7 @@ function Upload({ uploadBtnClick, progress }) {
             <div className="d-flex flex-column align-items-center justify-content-center pt-5 pb-6" >
               <UploadCloud style={{color:"#fff"}} size={150} />
               <p className="mb-2 text-sm" style={{color:"#fff"}}>
-                Click to upload or drag
-                and drop (Max 5MB)
+                Click to upload or Drag and drop file (Max 5MB)
               </p>
             </div>
             <input
@@ -80,7 +95,7 @@ function Upload({ uploadBtnClick, progress }) {
           <button
             disabled={!file}
             className={`p-2 ${
-              !file ? "btn btn-secondary" : "hover:bg-blue-700"
+              !file ? "btn btn-secondary " : "hover:bg-blue-700"
             } w-[30%] rounded-full mt-5`}
             onClick={handleUploadClick}
           >
