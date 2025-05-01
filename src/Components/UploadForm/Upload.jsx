@@ -75,7 +75,7 @@ function Upload({ uploadBtnClick, progress }) {
             <div className="d-flex flex-column align-items-center justify-content-center pt-5 pb-6" >
               <UploadCloud style={{color:"#fff"}} size={150} />
               <p className="mb-2 text-sm" style={{color:"#fff"}}>
-                Click to upload or Drag and drop file (Max 5MB)
+                Click to upload or Drag and drop file (Max 20MB)
               </p>
             </div>
             <input
