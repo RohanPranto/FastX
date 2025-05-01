@@ -13,9 +13,9 @@ function Upload({ uploadBtnClick, progress }) {
 
   const onFileSelect = (file) => {
     console.log(file);
-    if (file && file.size > 5000000) {
+    if (file && file.size > 200000000) {
       setErrorMsg("File size is too big");
-      console.log("File size is larger than 5MB");
+      console.log("File size is larger than 20MB");
       return;
     }
     setErrorMsg(null);
